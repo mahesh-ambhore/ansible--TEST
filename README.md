@@ -19,4 +19,3 @@ Before executing this playbook. We need to prepare the Docker container. To prep
        <container ip address> test.com
          
  12) Open the browser and check url "example.com" and "test.com"
-  
