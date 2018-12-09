@@ -12,14 +12,17 @@
     path: /var/www/example.com/public_html
     state: directory
     mode: 0755
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - file:
     path: /var/www/test.com/public_html
     state: directory
     mode: 0755
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: Enable First Applcation
   command: a2ensite example.com.conf
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: copy first application 
   copy:
@@ -33,13 +36,10 @@
     dest: /var/www/test.com/public_html/index.html
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
-- name: chnage owner and permission
-  command: chmod -R 755 /var/www
-
 - name: copy First Applcation Virtual Host Config 
   copy:
     src: "{{ role_path }}/files/example.com.conf"
-    dest: /etc/apache2/sites-available
+    dest: /etc/apache2/sites-availabl
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
 - name: copy First Applcation Virtual Host Config 

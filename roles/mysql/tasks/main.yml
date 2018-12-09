@@ -9,6 +9,10 @@
     - start mysql
   when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
 
+- name: start apache
+  service: name=mysql state=started
+  when: ansible_distribution == 'Debian' or ansible_distribution == 'Ubuntu'
+
 - name: Install Mysql CentOS
   yum: name={{item}} state=latest update_cache=yes
   with_items:
